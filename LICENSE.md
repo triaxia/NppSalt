@@ -1,10 +1,10 @@
-Copyright (c) 2013 Peter Gu or otherwise indicated by the incense information contained with the
-source files.
+Copyright (c) 2013 Peter Gu or otherwise indicated by the incense information contained withint
+the source files.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
 associated documentation files (the "Software"), to deal in the Software without restriction,
 including without limitation the rights to use, copy, modify, merge, publish, distribute,
-sub-license, and/or sell copies of the Software, and to permit persons to whom the Software is
+sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or 
