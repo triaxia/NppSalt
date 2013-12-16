@@ -1,4 +1,4 @@
-Copyright (c) 2013 Peter Gu or otherwise indicated by the incense information contained withint
+Copyright (c) 2013 Peter Gu or otherwise indicated by the license information contained within
 the source files.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
