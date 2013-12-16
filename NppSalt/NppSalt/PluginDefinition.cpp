@@ -29,7 +29,7 @@ BufferTimeList *BufferList = NULL;
 void AboutDlg()
 {
     BufferTimeList::MsgBox(nppData._nppHandle, 
-        TEXT("N++Salt simply prevents the Save operation from overwriting \n changes made by other programs. \n\nBy Peter Gu from Absolute Freeware Limited."));
+        TEXT("NppSalt simply prevents the Save operation from overwriting \n changes made by other programs. \n\nBy Peter Gu from Triaxia Limited."));
 }
 
 void pluginInit(HANDLE hModule)

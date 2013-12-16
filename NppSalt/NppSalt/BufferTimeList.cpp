@@ -55,7 +55,7 @@ BufferTimeList::~BufferTimeList()
         delete _files[idx];
 }
 
-BufferTime     * BufferTimeList::Find(unsigned long bufferId)
+BufferTime * BufferTimeList::Find(unsigned long bufferId)
 {
     AutoLock lock(&_sync);
     for (int idx = 0; idx < _files.size(); idx++)
@@ -70,10 +70,10 @@ void BufferTimeList::Add(unsigned long bufferId)
     TCHAR path[MAX_PATH];
     GetBufferFullPath(bufferId, path);
 
-    BufferTime     *pFile = Find(bufferId);
+    BufferTime  *pFile = Find(bufferId);
     if (pFile == NULL)
     {
-        pFile = new BufferTime    ();
+        pFile = new BufferTime();
         pFile->BufferId = bufferId;
         generic_strcpy(pFile->Path, path);
         if (GetLastWriteTime(path, &pFile->LastWriteTime))
@@ -94,7 +94,7 @@ void BufferTimeList::Delete(unsigned long bufferId)
     for (int idx = 0; idx < _files.size(); idx++)
     if (_files[idx]->BufferId == bufferId)
     {
-        BufferTime     *pFile = _files[idx];
+        BufferTime *pFile = _files[idx];
         _files.erase(_files.begin() + idx);
         delete pFile;
     }
@@ -103,7 +103,7 @@ void BufferTimeList::Delete(unsigned long bufferId)
 bool BufferTimeList::IsChanged(unsigned long bufferId, FILETIME *pTime)
 {
     AutoLock lock(&_sync);
-    BufferTime     *pFile = Find(bufferId);
+    BufferTime *pFile = Find(bufferId);
     if (pFile == NULL)
         return false;
     return GetLastWriteTime(pFile->Path, pTime) && memcmp(pTime, &pFile->LastWriteTime, sizeof(FILETIME)) != 0;
@@ -116,10 +116,7 @@ void BufferTimeList::BeforeSave(unsigned long bufferId)
     if (!IsChanged(bufferId, &time))
         return;
 
-    TCHAR path[MAX_PATH];
-    GetBufferFullPath(bufferId, path);
-
-    BufferTime     *pFile = Find(bufferId);
+    BufferTime *pFile = Find(bufferId);
 
     SendMessage(_hwnd, WM_COMMAND, IDM_EDIT_SELECTALL, 0);
     SendMessage(_hwnd, WM_COMMAND, IDM_EDIT_COPY, 0);
@@ -134,7 +131,7 @@ void BufferTimeList::BeforeSave(unsigned long bufferId)
     TCHAR newTitle[256];
     SendMessage(_hwnd, NPPM_GETFULLCURRENTPATH, 256, (LPARAM) newTitle);
     TCHAR buffer[1024];
-    static const TCHAR * format = TEXT("\"%s\" has been modified by another program (%s).\n\nIt has been re-loaded from the disk.\n\nYour changes have been copied to the \"%s\" window.");
+    static const TCHAR * format = TEXT("Your changes have NOT been saved because \"%s\" was modified and saved to disk by another program (%s).\n\nThe file has now been reloaded and your changes have been copied to the \"%s\" tab.");
     generic_sprintf(buffer, format, pFile->Path, localTime, newTitle);
     ErrorBox(_hwnd, buffer);
 }
@@ -163,7 +160,7 @@ void BufferTimeList::Monitor()
         // ignore all
     };
 
-    // flash outside of locks as otherwise it will block messgages which in-turn causes deadlock
+    // flash outside of the lock as otherwise it will block messgages which in-turn causes deadlock
     if (messages.size() > 0)
         FlashCaption(messages);
 }
@@ -221,7 +218,7 @@ void BufferTimeList::ToLocalTime(FILETIME fileTime, TCHAR *localTime)
     SYSTEMTIME stUTC, stLocal;
     FileTimeToSystemTime(&fileTime, &stUTC);
     SystemTimeToTzSpecificLocalTime(NULL, &stUTC, &stLocal);
-    generic_sprintf(localTime, TEXT("%02d:%02d:%02d %02d/%02d/%d"), 
+    generic_sprintf(localTime, TEXT("at %02d:%02d:%02d on %02d/%02d/%d"), 
         stLocal.wHour, stLocal.wMinute, stLocal.wSecond, stLocal.wDay, stLocal.wMonth, stLocal.wYear);
 }
 
