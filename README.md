@@ -10,8 +10,8 @@ NppSalt is a simple Notepad++ Plug-in. Currently it does two things:
    people from overwriting each other's changes. Note there is no way for a plug-in to cancel out a 
    Notepad++ file save operation, hence this is the best NppSalt can do for now.
    
-To compile the plug-in, simply open NppSalt.sln using Visual Studio 2010 (or high) and build. To deploy the
-plug-in, simply copy NppSalt.dll to Notepad++'s Plugins folder.
+To compile the plug-in, simply open NppSalt.sln using Visual Studio 2010 (or a later version) and build.
+To deploy the plug-in, simply copy NppSalt.dll to Notepad++'s Plugins folder.
 
 
 Peter Gu
