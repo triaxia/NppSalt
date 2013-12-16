@@ -28,7 +28,7 @@
         <span class="ribbon-outer">
           <span class="ribbon-inner">
             <h1>NppSalt</h1>
-            <h2>Notepad++ Overwriting Detection &amp; Alert</h2>
+            <h2>Notepad++ Concurrent Editing Detection &amp; Alert</h2>
           </span>
           <span class="left-tail"></span>
           <span class="right-tail"></span>
@@ -53,10 +53,7 @@
 
 <p>1) It flashes the Notepad++ screen when it detects any of the open files has been changed by other people;</p>
 
-<p>2) When a file is about to be saved, if NppSalt detects that the file has been changed by other people,
-   it will copy the current changes to a "new" window and reload the file from disk. This prevents
-   people from overwriting each other's changes. Note there is no way for a plug-in to cancel out a 
-   Notepad++ file save operation, hence this is the best NppSalt can do for now.</p>
+<p>2) It prevents concurrent Notepad++ sessions for overwriting each other's changes.</p>
 
 <p>To compile the plug-in, simply open NppSalt.sln using Visual Studio 2010 (or a later version) and build.
 To deploy the plug-in, simply copy NppSalt.dll to Notepad++'s Plugins folder.</p>
