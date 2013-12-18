@@ -1,6 +1,6 @@
 NppSalt - A simple Notepad++ Plug-in. 
 
-It does two things:
+Currently it provides the following functions:
 
 1) It flashes the Notepad++ screen when it detects any open files have been changed by other people;
 
